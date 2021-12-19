@@ -11,7 +11,7 @@ function App() {
 	const [isLoaded, setIsLoaded] = useState(false);
 	// Filter Checkbox
 	const [filter, setFilter] = useState([]);
-
+	//  Handle Filter
 	const handleTypeFilter = (e) => {
 		const { checked, value } = e.currentTarget;
 		setFilter(
@@ -20,8 +20,6 @@ function App() {
         : prev.filter(val => val !== value)
     );
 	}
-
-	console.log(filter);
 	// Search Query
 	const [searchVal, setSearchVal] = useState('');
 	// Fetched Data
@@ -39,26 +37,42 @@ function App() {
 		setStart(start + 5);
 		setEnd(end + 5);
 		}
+
 	// Fetching Data
 	useEffect(() => {
     fetch("/data/airports.json")
       .then(res => res.json())
       .then(
         (result) => {
-          setIsLoaded(true);
-          setAirports(result);
+			const data = result;
+          	setIsLoaded(true);
+			if(filter.length === 0){
+				setAirports(data);
+			}else{
+				setAirports(compareItem(filter,data));
+			}
         },
         (error) => {
           setIsLoaded(true);
           setError(error);
         }
       )
-  }, [])
-
+  });
+// Filtering data and returning 
+function compareItem(filterItems,results)
+{
+	const filteredData  = results.filter((result) => {
+		if(filterItems.includes(result.type)){
+		  return result;
+		}
+   })
+   return filteredData;
+}
+// Checking and Return view
 	if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-    return <div>Loading...</div>;
+    return <div class="loading"><p>Loading...</p></div>;
   } else {
 
 		return (
@@ -157,9 +171,9 @@ function App() {
 					</div>
 					{/* Filter Footer */}
 					<div className="filter-footer">
-						{ start == 0 ? <i></i> : <i className="la la-arrow-left la-3x" onClick={handleStart}></i>}
+						{ start === 0 ? <i></i> : <i className="la la-arrow-left la-3x" onClick={handleStart}></i>}
 						<div className="pagination">
-							Showing &nbsp;<span>{start + 1}</span>&nbsp;-&nbsp;<span>{end}</span>&nbsp;of &nbsp;<span>{airports.length + 1}</span>&nbsp;results
+							Showing &nbsp;<span>{start + 1}</span>&nbsp;-&nbsp;<span>{end}</span>&nbsp;of &nbsp;<span>{airports.length}</span>&nbsp;results
 						</div>
 						<i className="la la-arrow-right la-3x" onClick={handleEnd}></i>
 					</div>
