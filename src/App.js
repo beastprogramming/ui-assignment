@@ -65,6 +65,7 @@ function compareItem(filterItems,results)
 		if(filterItems.includes(result.type)){
 		  return result;
 		}
+		return false;
    })
    return filteredData;
 }
@@ -153,6 +154,7 @@ function compareItem(filterItems,results)
 									else if(searchedResult.name.toLowerCase().includes(searchVal.toLowerCase())){
 										return searchedResult;
 									}
+									return false;
 								}).slice(start, end).map((airport) => {
 									return(
 									<tr key={airport.id}>
