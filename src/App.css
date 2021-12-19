@@ -5,11 +5,34 @@
   --black: #000000;
   --white: #ffffff;
   --shadow: rgba(0, 0, 0, 0.1);
-  --roboto: 'Roboto', sans-serif;
+  --roboto: "Roboto", sans-serif;
 }
 /* Reset End */
 
-html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, i, form, label, legend, table, tbody, tfoot, thead, tr, th, td {
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+img,
+i,
+form,
+label,
+legend,
+table,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
   margin: 0;
   padding: 0;
   border: 0;
@@ -29,7 +52,7 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, i, form, label, legend
   align-items: center;
   justify-content: center;
   background: var(--background);
-  height: 100vh;
+  padding: 10rem 0px;
 }
 .container {
   background: var(--white);
@@ -53,22 +76,22 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, i, form, label, legend
   font-weight: 800;
   font-family: var(--roboto);
 }
-.header-wrapper .heading span{
+.header-wrapper .heading span {
   color: var(--gray);
 }
 
 /* Filter Styling */
 
 .filter-wrapper {
-  display:flex;
-  align-items:flex-start;
+  display: flex;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 3rem;
 }
 .filter-title {
   font-size: 1.5rem;
   line-height: 1;
-  font-weight:800;
+  font-weight: 800;
   font-family: var(--roboto);
   margin-bottom: 1rem;
 }
@@ -81,11 +104,11 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, i, form, label, legend
   align-items: center;
   justify-content: space-between;
 }
-.filter-type form label{
+.filter-type form label {
   display: flex;
   align-items: center;
   font-family: var(--roboto);
-  font-weight:400;
+  font-weight: 400;
   cursor: pointer;
 }
 input[type="checkbox"] {
@@ -106,10 +129,10 @@ input[type="checkbox"] {
 }
 input[type="checkbox"]::before {
   content: "✓";
-  font-weight:900;
+  font-weight: 900;
   width: 1em;
   height: 1em;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   transition: 120ms transform ease-in-out;
@@ -119,7 +142,7 @@ input[type="checkbox"]::before {
 
 input[type="checkbox"]:checked::before {
   background: var(--black);
-  content: '✓';
+  content: "✓";
   color: var(--white);
 }
 
@@ -130,37 +153,38 @@ input[type="checkbox"]:checked::before {
 }
 .filter-search input[type="text"] {
   width: 100%;
-  border:0;
+  border: 0;
   border-bottom: 2px solid var(--black);
   outline: 0;
   font-size: 1.3rem;
 }
 
 /* Table Styling */
-.table-container{
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
+.table-container {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
-table{
-  width:100%;
+table {
+  width: 100%;
   border-collapse: collapse;
   vertical-align: middle;
-  margin-bottom:2rem;
+  margin-bottom: 2rem;
 }
-thead{
+thead {
   background: var(--whisper);
 }
-thead th, tbody td {
+thead th,
+tbody td {
   font-size: 1.2rem;
   font-family: var(--roboto);
   text-align: left;
   padding: 20px;
 }
-.loading{
+.loading {
   height: 100vh;
   display: flex;
   align-items: center;
@@ -170,15 +194,14 @@ thead th, tbody td {
   color: var(--gray);
   font-weight: 800;
   font-family: var(--roboto);
-
 }
 
 th {
-  font-weight:900;
+  font-weight: 900;
 }
 
 tbody tr:nth-child(odd) {
-  background: var(--background)
+  background: var(--background);
 }
 
 /* Filter Footer */
@@ -192,8 +215,52 @@ tbody tr:nth-child(odd) {
   display: flex;
   align-items: center;
   font-family: var(--roboto);
-  font-size:1.1rem;
+  font-size: 1.1rem;
 }
-.filter-footer .pagination span{
+.filter-footer .pagination span {
   font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .App {
+    height: inherit;
+    padding: 2rem 0px;
+  }
+  .container{
+    width: 100%;
+    padding: 1em;
+  }
+  .header-wrapper .heading {
+    font-size: 2.5rem;
+  }
+  .filter-wrapper {
+    flex-direction: column;
+  }
+  .filter-type{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .filter-type form {
+    align-items: baseline;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+  .filter-type form label{
+    margin-bottom: 10px;
+    margin-right: 10px;
+    font-size: 1.1em;
+  }
+  .filter-search{
+    width: 100%;
+  }
+  .filter-footer {
+    flex-direction: column;
+}
+.filter-footer .icon-prev, .filter-footer .icon-next{
+  margin: 15px 0;
+  padding: 5px 10px;
+}
+
+
 }

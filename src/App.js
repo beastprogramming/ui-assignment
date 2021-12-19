@@ -171,11 +171,11 @@ function compareItem(filterItems,results)
 					</div>
 					{/* Filter Footer */}
 					<div className="filter-footer">
-						{ start === 0 ? <i></i> : <i className="la la-arrow-left la-3x" onClick={handleStart}></i>}
+						{ start === 0 ? <i></i> : <i className="icon-prev la la-arrow-left la-3x" onClick={handleStart}></i>}
 						<div className="pagination">
 							Showing &nbsp;<span>{start + 1}</span>&nbsp;-&nbsp;<span>{end}</span>&nbsp;of &nbsp;<span>{airports.length}</span>&nbsp;results
 						</div>
-						<i className="la la-arrow-right la-3x" onClick={handleEnd}></i>
+						<i className="icon-next la la-arrow-right la-3x" onClick={handleEnd}></i>
 					</div>
 				</div>
 			</div>
